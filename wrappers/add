@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+wrap.sh add --aur "$@"
