@@ -1,4 +1,4 @@
-FROM archlinux:20200908 AS a
+FROM archlinux:base-20201108.0.8567 AS a
 
 RUN pacman -Sy && pacman -S --noconfirm \
     binutils \
@@ -13,7 +13,7 @@ RUN useradd crema -m
 
 FROM a AS c
 
-ARG ofeliav=v0.3.0
+ARG ofeliav=v0.3.2
 
 RUN pacman -S --noconfirm \
     fakeroot \
