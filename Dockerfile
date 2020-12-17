@@ -1,4 +1,4 @@
-FROM archlinux:base-20201108.0.8567 AS a
+FROM archlinux:base-20201213.0.11146 AS a
 
 RUN pacman -Sy && pacman -S --noconfirm \
     binutils \
@@ -15,7 +15,7 @@ FROM a AS c
 
 ARG ofeliav=v0.3.2
 
-RUN pacman -S --noconfirm \
+RUN pacman -Sy && pacman -S --noconfirm \
     fakeroot \
     gcc \
     go \
