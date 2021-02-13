@@ -1,4 +1,4 @@
-FROM archlinux:base-20201213.0.11146 AS a
+FROM archlinux:base-20210207.0.15200 AS a
 
 RUN pacman -Sy && pacman -S --noconfirm \
     binutils \
@@ -13,7 +13,7 @@ RUN useradd crema -m
 
 FROM a AS c
 
-ARG ofeliav=v0.3.2
+ARG ofeliav=v0.3.4
 
 RUN pacman -Sy && pacman -S --noconfirm \
     fakeroot \
@@ -37,7 +37,7 @@ RUN go build -o . -v ./...
 
 FROM a
 
-ARG cremav=2.2.1-1
+ARG cremav=2.3.1-1
 
 WORKDIR /home/crema/
 
