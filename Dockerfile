@@ -1,4 +1,4 @@
-FROM archlinux:base-20210207.0.15200 AS a
+FROM archlinux:base-20210711.0.28748 AS a
 
 RUN pacman -Sy && pacman -S --noconfirm \
     binutils \
@@ -44,8 +44,11 @@ WORKDIR /home/crema/
 COPY --from=c /home/crema/crema/crema-${cremav}-any.pkg.tar.zst .
 COPY --from=c /home/crema/ofelia/ofelia /usr/local/bin/
 
-RUN systemd-machine-id-setup
 RUN pacman -U --noconfirm crema-${cremav}-any.pkg.tar.zst
+
+RUN sed -i 's/\.zst/\.xz/g' /usr/share/devtools/makepkg-x86_64.conf
+ENV container=docker
+RUN systemd-machine-id-setup
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 RUN echo "crema ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
