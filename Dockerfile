@@ -61,4 +61,6 @@ RUN mkdir repo/
 
 VOLUME /home/crema/repo/
 
-CMD ["ofelia", "daemon", "--config", "/home/crema/ofelia.ini"]
+COPY crema-ofelia-entrypoint.sh /usr/local/bin/
+
+CMD ["crema-ofelia-entrypoint.sh"]
