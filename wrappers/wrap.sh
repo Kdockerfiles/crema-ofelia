@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-crema "$1" --repo kenji "${@:2}"
+crema "$1" --repo repo "${@:2}"
 exit $?
